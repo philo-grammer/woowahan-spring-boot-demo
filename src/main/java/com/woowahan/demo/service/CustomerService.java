@@ -24,4 +24,8 @@ public class CustomerService {
         // JPA에서는 넣을 때 Entity 객체와 리턴 받은 Entity 객체가 동기화 된다.
         return customerRepository.save(customer);
     }
+
+    public Customer read(Long id) {
+        return customerRepository.findOne(id);
+    }
 }

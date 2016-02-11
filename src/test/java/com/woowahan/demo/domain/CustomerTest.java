@@ -1,8 +1,8 @@
 package com.woowahan.demo.domain;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 /**
  * Created by sykim on 2016. 2. 7..
