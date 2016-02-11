@@ -1,5 +1,7 @@
 package com.woowahan.demo.service;
 
+import static org.junit.Assert.assertEquals;
+
 import com.woowahan.demo.DemoApplication;
 import com.woowahan.demo.domain.Customer;
 import org.junit.After;
@@ -10,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by sykim on 2016. 2. 10..
@@ -28,9 +28,12 @@ public class CustomerServiceTest {
     @Autowired
     private CustomerService customerService;
 
+    private Customer lastCreatedCustomer;
+
     @Before
     public void setUp() throws Exception {
-
+        Customer customer = new Customer(null, "소프트", "승킬");
+        this.lastCreatedCustomer = customerService.create(customer);
     }
 
     @After
@@ -48,5 +51,16 @@ public class CustomerServiceTest {
         Customer created
                 = customerService.create(new Customer(null, "소프트", "승킬"));
         assertEquals(new Customer(created.getId(), "소프트", "승킬"), created);
+    }
+
+    /**
+     * 고객조회(read) service 만들기
+     * 예 : USP_Super_Customer_S01
+     */
+    @Test
+    public void testCustomerRead() {
+        Long lastCustomerid = this.lastCreatedCustomer.getId();
+        Customer readCustomer = customerService.read(lastCustomerid);
+        assertEquals(new Customer(lastCustomerid, "소프트", "승킬"), readCustomer);
     }
 }
