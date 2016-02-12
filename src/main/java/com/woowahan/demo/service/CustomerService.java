@@ -17,7 +17,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     /**
-     * @Transactional = 메솓 단위의 BEGIN ~ COMMIT
+     * @Transactional = 메소드 단위의 BEGIN ~ COMMIT
      */
     @Transactional
     public Customer create(Customer customer) {
@@ -27,5 +27,16 @@ public class CustomerService {
 
     public Customer read(Long id) {
         return customerRepository.findOne(id);
+    }
+
+    /**
+     * @Transactional = 메소드 단위의 BEGIN ~ COMMIT
+     */
+    @Transactional
+    public Customer update(Long id, String firstName, String lastName) {
+        Customer updatedCustomer = customerRepository.findOne(id);
+        updatedCustomer.setFirstName(firstName);
+        updatedCustomer.setLastName(lastName);
+        return updatedCustomer;
     }
 }
