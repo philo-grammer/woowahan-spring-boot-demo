@@ -15,9 +15,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * Created by sykim on 2016. 2. 10..
- * TODO : 고객생성(create) Service 만들기
- * TODO : 고객조회(read)
- * TODO : 고객수정(update)
+ * DONE : 고객생성(create) Service 만들기
+ * DONE : 고객조회(read)
+ * DONE : 고객수정(update)
  * TODO : 고객삭제(delete)
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -59,8 +59,20 @@ public class CustomerServiceTest {
      */
     @Test
     public void testCustomerRead() {
-        Long lastCustomerid = this.lastCreatedCustomer.getId();
-        Customer readCustomer = customerService.read(lastCustomerid);
-        assertEquals(new Customer(lastCustomerid, "소프트", "승킬"), readCustomer);
+        Long lastCustomerId = this.lastCreatedCustomer.getId();
+        Customer readCustomer = customerService.read(lastCustomerId);
+        assertEquals(new Customer(lastCustomerId, "소프트", "승킬"), readCustomer);
+    }
+
+    /**
+     * 고객수정(update) service 만들기
+     * 예 : USP_Super_Customer_M02
+     */
+    @Test
+    public void testCustomerUpdate() {
+        Long lastCustomerId = this.lastCreatedCustomer.getId();
+        Customer updated
+                = customerService.update(lastCustomerId, "소프트웨어", "야인");
+        assertEquals(new Customer(lastCustomerId, "소프트웨어", "야인"), updated);
     }
 }
