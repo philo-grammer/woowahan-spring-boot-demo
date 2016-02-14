@@ -1,6 +1,8 @@
 package com.woowahan.demo.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import com.woowahan.demo.DemoApplication;
 import com.woowahan.demo.domain.Customer;
@@ -74,5 +76,16 @@ public class CustomerServiceTest {
         Customer updated
                 = customerService.update(lastCustomerId, "소프트웨어", "야인");
         assertEquals(new Customer(lastCustomerId, "소프트웨어", "야인"), updated);
+    }
+
+    /**
+     * 고객삭제(Delete) service 테스트
+     * 예 : USP_Super_Customer_M03
+     */
+    @Test
+    public void testCustomerDelete() {
+        Long id = this.lastCreatedCustomer.getId();
+        assertTrue(customerService.delete(id));
+        assertFalse(customerService.delete(id));
     }
 }
