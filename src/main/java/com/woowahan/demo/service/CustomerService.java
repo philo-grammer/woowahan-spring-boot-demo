@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Service
- * 서비스 클래스를 나타내는 애너테이션입니다. 기능 면에서는 @Component와 다르지 않습니다.
- * 서비스 클래스는 Repository가 올바르게 동작한다는 전제하에 구현하도록 합니다.
+ *  서비스 클래스를 나타내는 애너테이션입니다. 기능 면에서는 @Component와 다르지 않습니다.
+ *  서비스 클래스는 Repository가 올바르게 동작한다는 전제하에 구현하도록 합니다.
  */
 @Service
 public class CustomerService {
@@ -49,7 +49,7 @@ public class CustomerService {
     public boolean delete(long id) {
         Customer customer = customerRepository.findOne(id);
         boolean result;
-        if(customer == null) {
+        if(customer == null){
             result = false;
         } else {
             customerRepository.delete(id);
